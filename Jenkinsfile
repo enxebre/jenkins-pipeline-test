@@ -1,3 +1,5 @@
+@Library('github.com/fabric8io/fabric8-pipeline-library@master')
+
 node {
     echo 'Hello from Pipeline'
 
@@ -16,5 +18,11 @@ node {
 		sh "ls -aslch"
 		sh "/usr/bin/docker ps"
 		sh "java -version"
+
+		deployRemoteKubernetes{
+	        url = kubernetesUrl
+	        defaultNamespace = 'default'
+	        stagingDockerRegistry = kubernetesStagingDockerRegistryUrl
+      	}
 	}
 }
