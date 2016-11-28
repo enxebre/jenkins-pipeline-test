@@ -14,7 +14,6 @@ node {
 		sh "env | sort"
 		sh "pwd"
 		sh "ls -aslch"
-		sh "/usr/bin/docker ps"
 		sh "java -version"
 
 		deployRemoteKubernetes{
