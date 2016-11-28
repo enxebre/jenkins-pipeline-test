@@ -9,11 +9,11 @@ node {
 		sh "tar -C /tmp -xvzf /tmp/helm.tar.gz"
 		sh "/tmp/linux-amd64/helm init"
 		sh "cp /tmp/linux-amd64/helm init"
+		sh "cp /tmp/linux-amd64/helm list"
 
 		sh "env | sort"
-
-		sh "mkdir -p ${workDir}"
-		sh "cp -R ${pwd}/* ${workDir}"
+		sh "pwd"
+		sh "ls -aslch"
 	
 	}
 }
