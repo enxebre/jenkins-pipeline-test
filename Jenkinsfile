@@ -1,8 +1,6 @@
 node {
 	@Library('github.com/fabric8io/fabric8-pipeline-library@master')
 
-    echo 'Hello from Pipeline'
-
 	stage ('preparation') {
 
 		sh "uname -r"
