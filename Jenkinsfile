@@ -14,6 +14,6 @@ node {
 		sh "env | sort"
 		sh "pwd"
 		sh "ls -aslch"
-		sh "docker ps"
+		sh "/usr/bin/docker ps"
 	}
 }
