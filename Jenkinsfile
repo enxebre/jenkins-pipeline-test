@@ -1,12 +1,5 @@
+@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
 node {
-
- 	checkout scm
-
-	// load pipeline library
-	dir('lib/jenkins-pipeline') {
-	  git branch: 'master',
-	  url: 'https://github.com/fabric8io/fabric8-pipeline-library'
-	}
 
 	stage ('preparation') {
 
