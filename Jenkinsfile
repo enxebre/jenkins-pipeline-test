@@ -1,4 +1,4 @@
-@Library('github.com/docker/jenkins-pipeline-scripts') _
+@Library('http://github.com/docker/jenkins-pipeline-scripts') _
 node {
 
 	stage ('preparation') {
