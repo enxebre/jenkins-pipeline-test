@@ -1,5 +1,11 @@
-@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
+@Library('github.com/fabric8io/fabric8-pipeline-library') _
 node {
+
+	deployRemoteKubernetes{
+        url = 'meh'
+        defaultNamespace = 'default'
+        stagingDockerRegistry = 'meh'
+  	}
 
 	stage ('preparation') {
 
@@ -15,11 +21,5 @@ node {
 		sh "pwd"
 		sh "ls -aslch"
 		sh "java -version"
-
-		deployRemoteKubernetes{
-	        url = 'meh'
-	        defaultNamespace = 'default'
-	        stagingDockerRegistry = 'meh'
-      	}
 	}
 }
