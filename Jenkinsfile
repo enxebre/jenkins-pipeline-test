@@ -1,5 +1,5 @@
+@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
 node {
-	@Library('github.com/fabric8io/fabric8-pipeline-library@master')
 
 	stage ('preparation') {
 
