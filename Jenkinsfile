@@ -3,11 +3,11 @@
 
 node {
 
-	getOutput {
-		cmd = 'ls'
-	}
-
 	stage ('preparation') {
+
+		getOutput {
+			cmd = 'ls'
+		}
 
 		sh "uname -r"
 		sh "id"
