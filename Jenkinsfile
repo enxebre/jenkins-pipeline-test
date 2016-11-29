@@ -7,6 +7,7 @@ podTemplate(label: 'mypod', containers: [
     node ('mypod') {
 
     	stage 'Run inside default node.'
+		sh "pwd"
 		sh "touch lolailo-file"
 		sh "ls -aslch"
 
