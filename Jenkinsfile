@@ -1,7 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/docker/jenkins-pipeline-scripts@master')
-
-def utils = new io.fabric8.Utils()
+@Library('github.com/docker/jenkins-pipeline-scripts@master') _
 
 node {
 
