@@ -1,13 +1,13 @@
 podTemplate(label: 'mypod', containers: [
 	containerTemplate(name: 'jnlp', image: 'jenkinsci/jnlp-slave:2.52', args: '${computer.jnlpmac} ${computer.name}', command: ''),
     containerTemplate(name: 'docker', image: 'docker:1.11.2', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'golang', image: 'golang:1.6.3-alpine', ttyEnabled: true, command: 'cat')
   ],
   volumes: [hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]) {
 
     node ('mypod') {
 
-    	stage 'Pre ls'
+    	stage 'Run inside default node.'
+		sh "touch lolailo-file"
 		sh "ls -aslch"
 
         container('docker') {
@@ -15,17 +15,5 @@ podTemplate(label: 'mypod', containers: [
             sh 'docker ps'
             sh "ls -aslch"
         }
-
-        stage 'Get a Golang project'
-        git url: 'https://github.com/hashicorp/terraform.git'
-        container('golang') {
-            stage 'Build a Go project'
-            sh """
-            mkdir -p /go/src/github.com/hashicorp
-            ln -s `pwd` /go/src/github.com/hashicorp/terraform
-            cd /go/src/github.com/hashicorp/terraform && make core-dev
-            """
-        }
-
     }
 }
