@@ -3,8 +3,9 @@
 
 node {
 
-	def envStage = utils.environmentNamespace('staging')
-
+	getOutput {
+		cmd = 'ls'
+	}
 
 	stage ('preparation') {
 
