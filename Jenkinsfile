@@ -5,14 +5,14 @@ node {
 
 	stage ('preparation') {
 
-		try {
-			getOutput ('ls') {
+		// try {
+		// 	getOutput ('ls') {
 			
-			}
-		}
-		catch (err) {
-			throw err
-		}
+		// 	}
+		// }
+		// catch (err) {
+		// 	throw err
+		// }
 
 		sh "uname -r"
 		sh "id"
