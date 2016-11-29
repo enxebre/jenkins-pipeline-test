@@ -1,11 +1,12 @@
-@Library('github.com/fabric8io/fabric8-pipeline-library@master') _
+#!/usr/bin/groovy
+@Library('github.com/docker/jenkins-pipeline-scripts@master')
+
+def utils = new io.fabric8.Utils()
+
 node {
 
-	deployRemoteKubernetes{
-        url = 'meh'
-        defaultNamespace = 'default'
-        stagingDockerRegistry = 'meh'
-  	}
+	def envStage = utils.environmentNamespace('staging')
+
 
 	stage ('preparation') {
 
