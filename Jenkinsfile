@@ -6,6 +6,9 @@ podTemplate(label: 'mypod', containers: [
 
     node ('mypod') {
 
+		stage 'SCMs'
+    	checkout scm
+    	
     	stage 'Run inside default node.'
 		sh "pwd"
 		sh "touch lolailo-file"
