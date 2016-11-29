@@ -5,8 +5,13 @@ node {
 
 	stage ('preparation') {
 
-		getOutput {
-			cmd = 'ls'
+		try {
+			getOutput {
+				cmd = 'ls'
+			}
+		}
+		catch (err) {
+			throw err
 		}
 
 		sh "uname -r"
