@@ -10,7 +10,7 @@ podTemplate(label: 'mypod', containers: [
 		sh "pwd"
 		sh "touch lolailo-file"
 		sh "ls -aslch"
-		sh "find / -name test-file"
+		sh "find / -name test-file", returnStatus: 0
 
 		stage 'SCMs'
     	checkout scm
