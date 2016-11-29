@@ -7,7 +7,7 @@ node {
 
 		try {
 			getOutput {
-				cmd = 'ls'
+				'ls'
 			}
 		}
 		catch (err) {
