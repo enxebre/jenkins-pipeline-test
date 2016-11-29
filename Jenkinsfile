@@ -6,8 +6,8 @@ node {
 	stage ('preparation') {
 
 		try {
-			getOutput {
-				'ls'
+			getOutput ('ls') {
+			
 			}
 		}
 		catch (err) {
