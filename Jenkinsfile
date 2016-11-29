@@ -1,27 +1,30 @@
-podTemplate(label: 'mypod', containers: [
-    containerTemplate(name: 'maven', image: 'maven:3.3.9-jdk-8-alpine', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'golang', image: 'golang:1.6.3-alpine', ttyEnabled: true, command: 'cat')
-  ],
-  volumes: [secretVolume(secretName: 'shared-secrets', mountPath: '/etc/shared-secrets')]) {
+#!/usr/bin/groovy
+@Library('github.com/docker/jenkins-pipeline-scripts@master') _
 
-    node ('mypod') {
-        stage 'Get a Maven project'
-        git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-        container('maven') {
-            stage 'Build a Maven project'
-            sh 'mvn clean install'
-        }
+node {
 
-        stage 'Get a Golang project'
-        git url: 'https://github.com/hashicorp/terraform.git'
-        container('golang') {
-            stage 'Build a Go project'
-            sh """
-            mkdir -p /go/src/github.com/hashicorp
-            ln -s `pwd` /go/src/github.com/hashicorp/terraform
-            cd /go/src/github.com/hashicorp/terraform && make core-dev
-            """
-        }
+	stage ('preparation') {
 
-    }
+		// try {
+		// 	getOutput ('ls') {
+			
+		// 	}
+		// }
+		// catch (err) {
+		// 	throw err
+		// }
+
+		sh "uname -r"
+		sh "id"
+		sh "wget https://kubernetes-helm.storage.googleapis.com/helm-v2.0.0-linux-amd64.tar.gz -O /tmp/helm.tar.gz"
+
+		sh "tar -C /tmp -xvzf /tmp/helm.tar.gz"
+		sh "/tmp/linux-amd64/helm init"
+		sh "/tmp/linux-amd64/helm list"
+
+		sh "env | sort"
+		sh "pwd"
+		sh "ls -aslch"
+		sh "java -version"
+	}
 }
