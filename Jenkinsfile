@@ -5,14 +5,15 @@ podTemplate(label: 'mypod', containers: [
   volumes: [hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock')]) {
 
     node ('mypod') {
-
-		stage 'SCMs'
-    	checkout scm
     	
     	stage 'Run inside default node.'
 		sh "pwd"
 		sh "touch lolailo-file"
 		sh "ls -aslch"
+		sh "find / -name test-file"
+
+		stage 'SCMs'
+    	checkout scm
 
         container('docker') {
             stage 'Run docker'
